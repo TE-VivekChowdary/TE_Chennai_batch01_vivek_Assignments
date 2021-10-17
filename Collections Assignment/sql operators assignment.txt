@@ -1,0 +1,126 @@
+1) LIST ALL THE EMPLOYEES WHOSE COMMISSION IS NULL? 
+ans: select *
+    -> from ntr where comission is null;
+
+2) LIST ALL THE EMPLOYEES WHO DON’T HAVE A REPORTING MANAGER ?
+Ans: select *
+from ntr where mgr is null;
+
+3) LIST ALL THE Developer IN DEPT 30 ?
+Ans: select *
+from ntr where role = 'developer' and deptid=30;
+
+4) LIST ALL THE SALESMEN IN DEPT NUMBER 30 AND HAVING SALARY GREATER THAN 1500 ?
+Ans: select *
+from ntr where role = 'Developer' and deptid=30 and salary>1500;
+
+
+5) LIST ALL THE EMPLOYEES WHOSE NAME STARTS WITH ‘S’ OR ‘A’ ?
+
+Ans: select *
+     from ntr where name like 'A%' or name like 's%';
+
+6) LIST ALL THE EMPLOYEES EXCEPT THOSE WHO ARE WORKING IN DEPT 10 & 20 ?
+Ans: select name
+    -> from ntr where deptid not in (200,300);
+
+ 
+7) LIST THE EMPLOYEES WHOSE NAME DOES NOT START WITH ‘S’ ?
+Ans: select *
+     from ntr where name not like 's%';
+
+8) LIST ALL THE EMPLOYEES WHO ARE HAVING REPORTING MANAGERS IN DEPT 200 ?
+Ans: select name
+from ntr where mgr is not null and deptid=200;
+
+9) LIST ALL THE EMPLOYEES WHOSE COMMISSION IS NULL AND WORKING AS Developer?
+Ans: select name 
+from ntr where comission is null and role = 'Developer';
+
+10) LIST ALL THE EMPLOYEES WHO DON’T HAVE A REPORTING MANAGER IN DEPTNO 100 OR 300 ?
+Ans: Select name
+from ntr  where mgr is null and deptid in (100,300);
+
+11) LIST ALL THE Architect IN DEPT 30 WITH SAL MORE THAN 2450 ?
+Ans: Select name
+from ntr where role='Architect' and salary>2450;
+
+12) LIST ALL THE developer IN DEPT NUMBER 200 AND HAVING SALARY GREATER THAN 2500 ?
+Ans: select *
+     from ntr where role = 'Developer' and deptid=200 and salary>2500;
+
+
+13) LIST ALL THE EMPLOYEES WHOSE NAME STARTS WITH ‘M’ OR ‘J’ ?
+Ans: select 8
+from ntr where name like 'M%' or name like 'J%';
+
+
+14) LIST ALL THE EMPLOYEES WITH ANNUAL SALARY EXCEPT THOSE WHO ARE WORKING IN DEPT 300?
+Ans: Select name, salary*12 as Annual_Salary
+     from ntr where deptid=300;
+ 
+15) LIST THE EMPLOYEES WHOSE NAME DOES NOT END WITH ‘ES’ OR ‘R’ ?
+Ans: select name
+      from ntr where name not like '%ES' or name not like '%R';
+
+16) LIST ALL THE EMPLOYEES WHO ARE HAVING REPORTING MANAGERS IN DEPT 200 ALONG WITH 10% HIKE IN SALARY ?
+
+Ans: Select name, salary + (salary* 10/100)
+from ntr where mgr is not null and deptid=200;
+
+17) DISPLAY ALL THE EMPLOYEE WHO ARE Architect HAVING ‘E’ AS THE LAST BUT ONE CHARACTER IN ENAME BUT SALARY HAVING EXACTLY 4 CHARACTER?
+Ans: select *
+    -> from ntr where role = 'Architect' and name like '%E' and salary like '____';
+
+18) DISPLAY ALL THE EMPLOYEE WHOse dob is AFTER YEAR 81 ?
+select *
+from ntr where dob> 1981-12-31
+
+19) DISPLAY ALL THE EMPLOYEE WHO ARE JOINED IN FEB ?
+Ans: select *
+from ntr where hiredate like '%FEB%';
+
+20) LIST THE EMPLOYEES WHO ARE NOT WORKING AS dba AND Architect IN DEPT 100 AND 200 WITH A SALARY IN THE RANGE OF 1000 TO 10000000 ?
+Ans: Select *
+from ntr where role not in ('Architect','dba') and deptid in (100,200) and salary between 1000 and 10000000;
+
+21) LIST THE EMPLOYEES WHOSE SALARY NOT IN THE RANGE OF 1000 TO 10000000 AND WORKING IN DEPT 100,200 OR 300 EXCEPT ALl Architect ?
+ANs: select *
+from ntr where salary not between 1000 and 10000000 and deptid in (100,200,300) and role != 'Architect';
+
+22) LIST THE DEPARTMENT NAMES WHICH ARE HAVING LETTER ‘O’ IN THEIR LOCATIONS AS WELL AS THEIR DEPARTMENT NAMES ?
+Ans: select *
+from ntr
+where deptid=(select dname from dept where location like '%o%' and dname like '%o%';
+
+23) DISPLAY ALL THE EMPLOYEES WHOSE JOB HAS STRING ‘MAN’ IN IT ?
+Ans: select *
+from ntr where role like '%man%'
+
+24)LIST THE EMPLOYEES WHO ARE HIRED AFTER 82 AND BEFORE 87.?
+Ans: select *
+from ntr where hiredate > 1982-12-21 and hiredate < 1987-01-01;
+
+25)WAQTD ALL THE DETAILS OF EMPLOYEES HIRED IN NOVEMBER AND DECEMBER ?
+Ans: select *
+from ntr where hiredate like '%November%' or hiredate like '%December%';
+
+26)LIST ALL THE EMPLOYEE NAMES AND COMISSION FOR THOSE EMPLOYEES WHO EARN COMISSION MORE THAN THEIR SALARY ?
+select name, comission
+from ntr where comission >salary;
+
+27)WAQTD NAME AND DESIGNATION FOR ALL THE EMPLOYEES HAVING REPORTING MANAGERS AND ALSO THRIE NAMES STARTING WITH ‘S’ ?
+ANS: select name, role
+from ntr where mgr is not null and name like 's%';
+
+28)WAQTD NAME AND SALARY OF ALL THE EMPLOYEES IF THEIR ANNUAL SALARY ENDS WITH ‘0’ ?
+ ANS: select name,salary, salary*12
+from ntr where sal*12 like '%0';
+29)WAQTD NAME OF THE EMPLOYEE HAVING ATLEAST 2L’s IN HIS NAME ?
+ANS: select name
+from ntr where name like '%L%L%';
+
+
+30)WAQTD NAME OF THE EMPLOYEES WHOS NAME STARTS WITH A ‘VOWEL’
+ans: select name
+from ntr where name like 'a%' or name like 'e%' or name like 'i%' or name like 'o%' or name like 'u%';
